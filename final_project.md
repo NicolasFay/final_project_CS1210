@@ -8,8 +8,20 @@
 - python -m venv .venv
 - also can try "py -3 -m venv .venv"
   
-# How to push, pull, and merge
-- 
 
-# NICKS NOTES
-- nothing yet
+# program
+- war game
+- func deck of cards
+- func deal
+-  war
+- each card has a value
+
+# main function to play the game
+    # Creat deck *
+    # deal cards * 
+    # start play, compare top card of each players stack * 
+    # else greater value player, appends players card, pops from loser *
+    # if values are the same the do war fucntion
+    # loops till player has empty stack
+    # 
+
