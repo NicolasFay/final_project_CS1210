@@ -103,5 +103,18 @@ if __name__ == "__main__":
             play = input("Play again? y/n ")
 
 
+if __name__ == "__main__":
+    stack1, stack2 = deal(createdeck(RANKS, SUITS))
+    print(stack1)
+    print(stack2)
 
-
+    while stack1 and stack2:
+        print(f"{stack1[-1]} VS {stack2[-1]}")
+        if CARD_VALUES[stack1[-1]] > CARD_VALUES[stack2[-1]]:
+            stack1.insert(0, stack2.pop(-1))
+        elif CARD_VALUES[stack1[-1]] < CARD_VALUES[stack2[-1]]:
+            stack2.insert(0, stack1.pop(-1))
+        else:
+            break
+    print(stack1)
+    print(stack2)
