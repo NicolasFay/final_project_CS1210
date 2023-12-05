@@ -6,7 +6,6 @@ CS 1210
 '''
 
 import random
-import time
 import pyfiglet
 
 # yo
@@ -14,7 +13,8 @@ import pyfiglet
 # nick brach test number 2
 
 
-RANKS = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'Jack', 'Queen', 'King', 'Ace']
+RANKS = ['2', '3', '4', '5', '6', '7', '8', '9'
+    , '10', 'Jack', 'Queen', 'King', 'Ace']
 SUITS = ['Spades', 'Clubs', 'Hearts', 'Diamonds']
 CARD_VALUES = {}
 
@@ -91,7 +91,6 @@ if __name__ == "__main__":
                 stack2.insert(0, stack2.pop(-1))
             else:
                 stack1, stack2 = war(stack1, stack2)
-            # time.sleep(1)
         if stack1:
             print("Stack 1 wins the game")
         elif stack2:
