@@ -6,8 +6,8 @@ CS 1210
 '''
 
 import random
-import time
 import pyfiglet
+from colorama import Fore, Back
 
 # yo
 # nick branch test
@@ -46,7 +46,7 @@ def deal(deck):
 
 
 def war(stack1, stack2):
-    print(pyfiglet.figlet_format("WAR"))
+    print(Fore.MAGENTA + pyfiglet.figlet_format("WAR!") + Fore.RESET)
     warpile1 = []
     warpile2 = []
     winnercards = []
@@ -77,10 +77,13 @@ if __name__ == "__main__":
     play = 'y'
     while play == 'y':
         stack1, stack2 = deal(createdeck(RANKS, SUITS))
-        print(stack1)
-        print(stack2)
+
+        print("Welcome to War")
+        print(Fore.MAGENTA + pyfiglet.figlet_format("WAR GAME") + Fore.RESET)
 
         while stack1 and stack2:
+            print(Fore.BLUE + f"You:{len(stack1)}" + Fore.RESET, end = '')
+            print(Fore.RED + f"\tOpp:{len(stack2)}" + Fore.RESET)
             print(f"{stack1[-1]} VS {stack2[-1]}")
             input("")
             if CARD_VALUES[stack1[-1]] > CARD_VALUES[stack2[-1]]:
@@ -91,7 +94,6 @@ if __name__ == "__main__":
                 stack2.insert(0, stack2.pop(-1))
             else:
                 stack1, stack2 = war(stack1, stack2)
-            # time.sleep(1)
         if stack1:
             print("Stack 1 wins the game")
         elif stack2:
@@ -103,18 +105,3 @@ if __name__ == "__main__":
             play = input("Play again? y/n ")
 
 
-if __name__ == "__main__":
-    stack1, stack2 = deal(createdeck(RANKS, SUITS))
-    print(stack1)
-    print(stack2)
-
-    while stack1 and stack2:
-        print(f"{stack1[-1]} VS {stack2[-1]}")
-        if CARD_VALUES[stack1[-1]] > CARD_VALUES[stack2[-1]]:
-            stack1.insert(0, stack2.pop(-1))
-        elif CARD_VALUES[stack1[-1]] < CARD_VALUES[stack2[-1]]:
-            stack2.insert(0, stack1.pop(-1))
-        else:
-            break
-    print(stack1)
-    print(stack2)
