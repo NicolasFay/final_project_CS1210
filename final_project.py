@@ -7,10 +7,7 @@ CS 1210
 
 import random
 import pyfiglet
-
-# yo
-# nick branch test
-# nick brach test number 2
+import colorama
 
 
 RANKS = ['2', '3', '4', '5', '6', '7', '8', '9'
@@ -19,15 +16,16 @@ SUITS = ['Spades', 'Clubs', 'Hearts', 'Diamonds']
 CARD_VALUES = {}
 
 
-def createdeck(ranks, suits):
+# Creates deck of cards and returns as list object
+def createdeck():
     deck = []
     for i in RANKS:
         for e in SUITS:
             deck.append(f"{i} of {e}")
     num = 2
     count = 0
-    for cardName in deck:
-        CARD_VALUES[cardName] = num
+    for card_name in deck:
+        CARD_VALUES[card_name] = num
         count += 1
         if count == 4:
             num += 1
@@ -36,6 +34,7 @@ def createdeck(ranks, suits):
     return deck
 
 
+# Deals list object into 2 even piles
 def deal(deck):
     stack1 = []
     stack2 = []
@@ -45,42 +44,54 @@ def deal(deck):
     return stack1, stack2
 
 
+# Used to decide winner between cards of tied value
 def war(stack1, stack2):
-    print(pyfiglet.figlet_format("WAR"))
+    print(colorama.Fore.RED + pyfiglet.figlet_format("WAR") + colorama.Fore.RESET)
     warpile1 = []
     warpile2 = []
     winnercards = []
     for i in range(3):
         if not stack1:
             return stack1, stack2
-        elif stack1:
+        if stack1:
             winnercards.append(stack1[-1])
             warpile1.append(CARD_VALUES[stack1.pop(-1)])
         if not stack2:
             return stack1, stack2
-        elif stack2:
+        if stack2:
             winnercards.append(stack2[-1])
             warpile2.append(CARD_VALUES[stack2.pop(-1)])
+    print("Stack 1 cards:")
+    for i in range(0, len(winnercards), 2):
+        print(winnercards[i])
+    print("\nStack 2 cards:")
+    for i in range(1, len(winnercards), 2):
+        print(winnercards[i])
+    print("\n")
     if sum(warpile1) > sum(warpile2):
         while winnercards:
             stack1.insert(0, winnercards.pop(-1))
-        print("Stack 1 wins")
+        print("Stack 1 wins\n")
     if sum(warpile1) < sum(warpile2):
         while winnercards:
             stack2.insert(0, winnercards.pop(-1))
-        print("Stack 2 wins")
+        print("Stack 2 wins\n")
     return stack1, stack2
 
 
 if __name__ == "__main__":
-    print("Press enter to draw a card.")
+    print(colorama.Fore.MAGENTA + pyfiglet.figlet_format("WAR GAME") + colorama.Fore.RESET)
+    print("Press enter to draw a card.\n")
     play = 'y'
     while play == 'y':
-        stack1, stack2 = deal(createdeck(RANKS, SUITS))
-        print(stack1)
-        print(stack2)
-
+        stack1, stack2 = deal(createdeck())
         while stack1 and stack2:
+            print(colorama.Fore.BLUE +
+                  f"Stack 1 has {len(stack1)} cards remaining" +
+                  colorama.Fore.RESET)
+            print(colorama.Fore.RED +
+                  f"Stack 2 has {len(stack2)} cards remaining" +
+                  colorama.Fore.RESET)
             print(f"{stack1[-1]} VS {stack2[-1]}")
             input("")
             if CARD_VALUES[stack1[-1]] > CARD_VALUES[stack2[-1]]:
@@ -98,9 +109,5 @@ if __name__ == "__main__":
         print(stack1)
         print(stack2)
         play = input("Play again? y/n ")
-        while play != 'y' and play != 'n':
+        while play not in ('y', 'n'):
             play = input("Play again? y/n ")
-
-
-
-
