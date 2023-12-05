@@ -7,8 +7,8 @@ CS 1210
 
 import random
 import pyfiglet
-import colorama
 
+from colorama import Fore
 
 RANKS = ['2', '3', '4', '5', '6', '7', '8', '9'
     , '10', 'Jack', 'Queen', 'King', 'Ace']
@@ -46,7 +46,8 @@ def deal(deck):
 
 # Used to decide winner between cards of tied value
 def war(stack1, stack2):
-    print(colorama.Fore.RED + pyfiglet.figlet_format("WAR") + colorama.Fore.RESET)
+    print(Fore.MAGENTA + pyfiglet.figlet_format("WAR!") + Fore.RESET)
+
     warpile1 = []
     warpile2 = []
     winnercards = []
@@ -84,14 +85,15 @@ if __name__ == "__main__":
     print("Press enter to draw a card.\n")
     play = 'y'
     while play == 'y':
-        stack1, stack2 = deal(createdeck())
+        stack1, stack2 = deal(createdeck(RANKS, SUITS))
+
+        print("Welcome to War")
+        print(Fore.MAGENTA + pyfiglet.figlet_format("WAR GAME") + Fore.RESET)
+
         while stack1 and stack2:
-            print(colorama.Fore.BLUE +
-                  f"Stack 1 has {len(stack1)} cards remaining" +
-                  colorama.Fore.RESET)
-            print(colorama.Fore.RED +
-                  f"Stack 2 has {len(stack2)} cards remaining" +
-                  colorama.Fore.RESET)
+            print(Fore.BLUE + f"You:{len(stack1)}" + Fore.RESET, end = '')
+            print(Fore.RED + f"\tOpp:{len(stack2)}" + Fore.RESET)
+
             print(f"{stack1[-1]} VS {stack2[-1]}")
             input("")
             if CARD_VALUES[stack1[-1]] > CARD_VALUES[stack2[-1]]:
