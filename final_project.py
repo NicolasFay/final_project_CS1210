@@ -84,11 +84,10 @@ def war(war_stack1, war_stack2):
 if __name__ == "__main__":
     print(Fore.MAGENTA + pyfiglet.figlet_format("WAR GAME") + Fore.RESET)
     print("Press enter to draw a card.\n")
-    play = 'y'
-    while play == 'y':
+    PLAY = 'y'
+    while PLAY == 'y':
         stack1, stack2 = deal(createdeck())
         print("Welcome to War")
-        print(Fore.MAGENTA + pyfiglet.figlet_format("WAR GAME") + Fore.RESET)
         while stack1 and stack2:
             print(Fore.BLUE + f"You:{len(stack1)}" + Fore.RESET, end='')
             print(Fore.RED + f"\tOpp:{len(stack2)}" + Fore.RESET)
@@ -108,6 +107,6 @@ if __name__ == "__main__":
             print("Stack 2 wins the game")
         print(stack1)
         print(stack2)
-        play = input("Play again? y/n ")
-        while play not in ('y', 'n'):
-            play = input("Play again? y/n ")
+        PLAY = input("Play again? y/n ")
+        while PLAY not in ('y', 'n'):
+            PLAY = input("Play again? y/n ")
