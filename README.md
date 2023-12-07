@@ -15,3 +15,6 @@
 2. Run the program from the command line with
 ```python final_project.py```
 3. Follow the on-screen prompts
+
+# Testing
+- to test the program we would play through full games using the program to make sure that no bugs were found. Games of the actual card game were played in order to make sure we were staying true to the original game.
