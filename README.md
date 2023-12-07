@@ -3,7 +3,7 @@
 
 # Description & Team Member Roles
 - Python Simulation of classic card game War. It is a player vs a computer opponent, due to the original idea of the game outcome being practically random but the outcome of the game is facilitated by the user's input to progress the game. Each player starts with a random half of a deck of cards and is shuffled. then each player plays the top card and the bigger card wins, The winner takes both cards to the bottom of their stack. If the value of the cards is the same then war happens and each player plays 3 more cards, the third card is the one that determines the winner of the war and the winner takes all cards played. This play continues until one player has all the cards.
-- Both Joe and Nick worked on the code during group work sessions and planned out the ideas and execution of the program. Extra work outside of group sessions was put in by Joe.
+- Both Joe and Nick worked on the code during group work sessions and planned out the ideas and execution of the program. Most commits for new content are made by Joe for group sessions. Extra work outside of group sessions was put in by Joe.
 
 # pip modules
 - pyfiglet
